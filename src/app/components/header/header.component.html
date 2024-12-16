@@ -1,0 +1,47 @@
+<!--
+<header>
+  <h1>Sticky Header Pow!</h1>
+  <nav>
+    <a href="">Home</a>
+    <a href="">About</a>
+    <a href="">Gallery</a>
+    <a href="">Contact</a>
+  </nav>
+</header>
+-->
+
+
+<div class="">
+  <p-menubar [model]="items">
+    <ng-template #start>
+      <span style="margin-right: .5em">
+        <p-avatar image="christan.jpeg" shape="circle" styleClass="margint-right-1" />
+      </span>
+      <span class="title margint-right-1">Christ Vanity</span>
+    </ng-template>
+
+    <ng-template #item let-item let-root="root" align="right">
+      <a pRipple class="flex items-center p-menubar-item-link">
+        <span>{{ item.label }}</span>
+        @if (item.badge) {
+          <p-badge [ngClass]="{ 'ml-auto': !root, 'ml-2': root }" [value]="item.badge" />
+        }
+        @if (item.shortcut) {
+          <span class="ml-auto border border-surface rounded bg-emphasis text-muted-color text-xs p-1">{{ item.shortcut }}</span>
+        }
+        @if (item.items) {
+          <i [ngClass]="['ml-auto pi', root ? 'pi-angle-down' : 'pi-angle-right']"></i>
+        }
+
+      </a>
+    </ng-template>
+
+    <ng-template #end>
+
+        <input type="text" pInputText placeholder="Search" class="w-36" />
+        <!--<p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />-->
+
+    </ng-template>
+
+  </p-menubar>
+</div>

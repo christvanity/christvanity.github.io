@@ -1,0 +1,30 @@
+<div class="card">
+  <p-carousel
+    [circular]="false"
+    [numScroll]="3"
+    [numVisible]="3"
+    [responsiveOptions]="responsiveOptions"
+    [value]="products">
+    <ng-template #item let-product>
+
+      <p-card [style]="{ width: '25rem', overflow: 'hidden' }">
+        <ng-template pTemplate="header">
+          <img alt="Card" class="w-full" src="{{product.image}}" height="350px" width="250px"/>
+        </ng-template>
+        <ng-template pTemplate="title"> {{ product.name }}</ng-template>
+        <ng-template pTemplate="subtitle"> Get a chance to meet her</ng-template>
+        <p>
+          Vanity models are the best in entire bay area
+        </p>
+        <ng-template pTemplate="footer">
+          <div class="flex gap-4 mt-1">
+            <p-button label="Live Chat" severity="secondary" class="w-full" [outlined]="true" styleClass="w-full" />
+            <p-button label="Video Call" class="w-full" styleClass="w-full" />
+          </div>
+        </ng-template>
+      </p-card>
+
+
+    </ng-template>
+  </p-carousel>
+</div>
