@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../services/product/product.service';
 import {Carousel} from 'primeng/carousel';
-import {Tag} from 'primeng/tag';
-import {NgStyle} from '@angular/common';
 import {Button} from 'primeng/button';
 import {Card} from 'primeng/card';
 import {PrimeTemplate} from 'primeng/api';
+import {Dialog} from 'primeng/dialog';
+import {InputText} from 'primeng/inputtext';
 
 @Component({
   selector: 'app-top-model',
@@ -13,7 +13,9 @@ import {PrimeTemplate} from 'primeng/api';
     Carousel,
     Button,
     Card,
-    PrimeTemplate
+    PrimeTemplate,
+    Dialog,
+    InputText
   ],
   templateUrl: './top-model.component.html',
   styleUrl: './top-model.component.scss'
@@ -21,6 +23,9 @@ import {PrimeTemplate} from 'primeng/api';
 export class TopModelComponent implements OnInit {
   products: any | undefined;
   responsiveOptions: any[] | undefined;
+  showVideoCallDialog: boolean = false;
+  showLiveChatDialog: boolean = false;
+  dialogHeading: string = 'Video Call';
 
   constructor(private productService: ProductService) {
   }
@@ -50,6 +55,19 @@ export class TopModelComponent implements OnInit {
         numScroll: 1
       }
     ]
+  }
+
+  makeVideoCall() {
+    this.showVideoCallDialog = true;
+  }
+
+  closeVideoCall() {
+    this.showVideoCallDialog = false;
+  }
+
+  liveChat() {
+    this.showVideoCallDialog = false; // Ensure video call dialog is closed
+    alert('Live Chat feature is not yet implemented.');
   }
 
   getSeverity(status: string) {

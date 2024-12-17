@@ -7,7 +7,7 @@
     [value]="products">
     <ng-template #item let-product>
 
-      <p-card [style]="{ width: '25rem', overflow: 'hidden' }">
+      <p-card [style]="{ width: '20rem', overflow: 'hidden' }">
         <ng-template pTemplate="header">
           <img alt="Card" class="w-full" src="{{product.image}}" height="350px" width="250px"/>
         </ng-template>
@@ -18,8 +18,8 @@
         </p>
         <ng-template pTemplate="footer">
           <div class="flex gap-4 mt-1">
-            <p-button label="Live Chat" severity="secondary" class="w-full" [outlined]="true" styleClass="w-full" />
-            <p-button label="Video Call" class="w-full" styleClass="w-full" />
+            <p-button label="Live Chat" (click)="liveChat()" severity="secondary" class="w-full" [outlined]="true" styleClass="w-full" />
+            <p-button label="Video Call"  (click)="makeVideoCall()" class="w-full" styleClass="w-full" />
           </div>
         </ng-template>
       </p-card>
@@ -28,3 +28,19 @@
     </ng-template>
   </p-carousel>
 </div>
+
+<p-dialog header="{{dialogHeading}}" [modal]="true" [(visible)]="showVideoCallDialog" [style]="{ width: '25rem' }">
+  <span class="p-text-secondary block mb-8">Update your information.</span>
+  <div class="flex items-center gap-4 mb-4">
+    <label for="phone" class="font-semibold w-24">Phone Number</label>
+    <input pInputText id="phone" class="flex-auto" autocomplete="off" />
+  </div>
+  <div class="flex items-center gap-4 mb-8">
+    <label for="email" class="font-semibold w-24">Email</label>
+    <input pInputText id="email" class="flex-auto" autocomplete="off" />
+  </div>
+  <div class="flex justify-end gap-2">
+    <p-button label="Cancel" severity="secondary" (click)="showVideoCallDialog = false" />
+    <p-button label="Save" (click)="showVideoCallDialog = false" />
+  </div>
+</p-dialog>

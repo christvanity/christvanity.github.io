@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnDestroy, OnInit, Renderer2} from '@angular/core';
+import {Component, ElementRef, HostListener, OnDestroy, OnInit, Renderer2} from '@angular/core';
 import {Menubar} from 'primeng/menubar';
 import {Ripple} from 'primeng/ripple';
 import {Badge} from 'primeng/badge';
@@ -67,13 +67,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
     window.removeEventListener('scroll', this.scroll, true);
   }
 
-  scroll = (event: any): void => {
-    //handle your scroll here
-    //notice the 'odd' function assignment to a class field
-    //this is used to be able to remove the event listener
 
-    var winTop = event.scrollTop();
-    if(winTop >= 30){
+  @HostListener('window:scroll', ['$event']) // for window scroll events
+  scroll = (event: any): void => {
+    const verticalOffset = window.scrollY
+      || document.documentElement.scrollTop
+      || document.body.scrollTop || 0;
+    // var winTop = event.scrollTop();
+    console.log('TopModelComponent|scroll|verticalOffset:%o', verticalOffset);
+    if(verticalOffset >= 30){
       this.renderer.addClass(document.body, 'sticky-header');
       // this.elementRef.nativeElement.getbody").addClass("sticky-header");
     }else{
