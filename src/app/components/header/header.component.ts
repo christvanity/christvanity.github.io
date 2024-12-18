@@ -15,7 +15,6 @@ import {InputText} from 'primeng/inputtext';
     Badge,
     NgClass,
     Avatar,
-    InputText
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'

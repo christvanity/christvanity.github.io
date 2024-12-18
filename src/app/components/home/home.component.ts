@@ -8,7 +8,6 @@ import {HighlightComponent} from '../highlight/highlight.component';
   imports: [
     ModelsComponent,
     TopModelComponent,
-    HighlightComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'

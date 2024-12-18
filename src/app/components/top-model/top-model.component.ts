@@ -1,21 +1,24 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../services/product/product.service';
 import {Carousel} from 'primeng/carousel';
-import {Button} from 'primeng/button';
+import {ButtonModule} from 'primeng/button';
 import {Card} from 'primeng/card';
 import {PrimeTemplate} from 'primeng/api';
-import {Dialog} from 'primeng/dialog';
+import {DialogModule} from 'primeng/dialog';
 import {InputText} from 'primeng/inputtext';
+import {NgOptimizedImage} from '@angular/common';
+import {Avatar} from 'primeng/avatar';
 
 @Component({
   selector: 'app-top-model',
   imports: [
     Carousel,
-    Button,
+    ButtonModule,
     Card,
     PrimeTemplate,
-    Dialog,
-    InputText
+    DialogModule,
+    InputText,
+    Avatar
   ],
   templateUrl: './top-model.component.html',
   styleUrl: './top-model.component.scss'
@@ -26,6 +29,7 @@ export class TopModelComponent implements OnInit {
   showVideoCallDialog: boolean = false;
   showLiveChatDialog: boolean = false;
   dialogHeading: string = 'Video Call';
+  selectedModel: any = {};
 
   constructor(private productService: ProductService) {
   }
@@ -57,17 +61,16 @@ export class TopModelComponent implements OnInit {
     ]
   }
 
-  makeVideoCall() {
+  makeVideoCall(product: any) {
+    this.selectedModel = product;
+    this.dialogHeading = 'Video Call';
     this.showVideoCallDialog = true;
   }
 
-  closeVideoCall() {
-    this.showVideoCallDialog = false;
-  }
-
-  liveChat() {
-    this.showVideoCallDialog = false; // Ensure video call dialog is closed
-    alert('Live Chat feature is not yet implemented.');
+  liveChat(product: any) {
+    this.selectedModel = product;
+    this.dialogHeading = 'Live Chat';
+    this.showVideoCallDialog = true;
   }
 
   getSeverity(status: string) {
